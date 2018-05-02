@@ -17,7 +17,6 @@ import butterknife.ButterKnife;
  */
 
 public class PlayerAdapter extends RecyclerView.Adapter<PlayerAdapter.PlayerViewholder> {
-    private Bundle bundle;
     private List<Player> playerList;
 
     public PlayerAdapter(List<Player> playerList) {

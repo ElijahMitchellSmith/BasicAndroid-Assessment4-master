@@ -13,7 +13,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+//Elijah Smith
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.input_team)
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.button_add_player)
     protected void onAddPlayerButtonClicked() {
-        if (teamInput.toString().isEmpty() || numberInput.toString().isEmpty() || nameInput.toString().isEmpty()) {
+        if (teamInput.getText().toString().isEmpty() || numberInput.getText().toString().isEmpty() || nameInput.getText().toString().isEmpty()) {
             Toast.makeText(this, "Please Complete all fields", Toast.LENGTH_LONG).show();
         } else {
             String playerTeam = teamInput.getText().toString();
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private void addPlayerToList(final String playerTeam, final String teamNumber, final String playerName) {
         Player player = new Player(playerTeam, teamNumber, playerName);
         playerList.add(player);
+        //Debugging Process...Informations is added and sent but list still returns null.
     }
 
 
@@ -60,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
             //Creation of the New Intent and connecting the 2 activities.
             Intent intent = new Intent(MainActivity.this, PlayersActivity.class);
             //Getting Intnetn and adding the ArrayListExtra
-            getIntent().getStringArrayListExtra(TAG);
+            intent.putParcelableArrayListExtra(TAG, (ArrayList<? extends Parcelable>) playerList);
             //Starting the Activity
             startActivity(intent);
-
+//WHY IS IT NULL??!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?
 
         }
 

@@ -3,6 +3,7 @@ package com.example.rodneytressler.week4assessment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.List;
@@ -27,13 +28,21 @@ public class PlayersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_players);
         ButterKnife.bind(this);
         playerList = getIntent().getParcelableArrayListExtra(TAG);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+
         //Attempted to use bundles. Got upset and figured it was wrong.
        // Bundle bundle = new Bundle();
       //  bundle.putParcelableArrayList(TAG,playerList);
         populateRecyclerView();
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter.notifyDataSetChanged();
+
     }
 
     private void populateRecyclerView() {
+        adapter = new PlayerAdapter(playerList);
+
 
     }
 }
